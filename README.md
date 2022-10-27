@@ -1,8 +1,8 @@
 ## -seguranca-uni7-criptografia-RSA
 
-##### 1 - Implemente um sistema que simula uma troca de mensagens entre duas partes cifradas através do RSA. 
-##### Não é necessário pedir o input do usuário, bastando que o sistema exercite a geração de pares de chaves 
-##### públicas e privadas aleatórias, seguido da cifragem e decifragem de mensagens de forma correta.
+* 1 - Implemente um sistema que simula uma troca de mensagens entre duas partes cifradas através do RSA. 
+    *Não é necessário pedir o input do usuário, bastando que o sistema exercite a geração de pares de chaves 
+    *públicas e privadas aleatórias, seguido da cifragem e decifragem de mensagens de forma correta.
 
 ##### 2 - Pesquise por ferramentas que possam ser utilizadas pela linha de comando para gerar pares 
 ##### de chaves assimétricas. Enumere os comandos necessários para criar um par de chaves, 
