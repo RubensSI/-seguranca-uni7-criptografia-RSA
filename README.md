@@ -1,4 +1,4 @@
-## -seguranca-uni7-criptografia-RSA
+## seguranca-uni7-criptografia-RSA
 
 * 1 - Implemente um sistema que simula uma troca de mensagens entre duas partes cifradas através do RSA. 
     Não é necessário pedir o input do usuário, bastando que o sistema exercite a geração de pares de chaves 
