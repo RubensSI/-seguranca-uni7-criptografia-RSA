@@ -1,3 +1,4 @@
+from asyncore import write
 import rsa
 
 
@@ -29,8 +30,9 @@ def decrypt(ciphertext, key):
 
 
 def sign(message, key):
-    #return rsa.sign(message.encode('ascii'), key, 'SHA-1')
+    # return rsa.sign(message.encode('ascii'), key, 'SHA-1')
     return rsa.sign(message.ecode('ascii', key, 'SHA-1'))
+
 
 def verify(message, signature, key):
     try:
@@ -41,7 +43,7 @@ def verify(message, signature, key):
 
 generateKeys()
 
-publicKey, privateKey =  loadKeys()
+publicKey, privateKey = loadKeys()
 
 message = input('Write your message here:')
 ciphertext = encrypt(message, publicKey)
