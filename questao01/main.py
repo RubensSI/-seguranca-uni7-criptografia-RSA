@@ -5,13 +5,14 @@ import rsa
 # para uso em outrar partes do código na forma de arquivo
 
 
-def generateKeys():
+def gerarChaves():
 
     # criar um arquivo chamado de public.pem
     # salvar os valores das chaves em então
     # criar um fluxo de arquivo chamdo de f
 
     public_key, private_key = rsa.newkeys(1024)
+
     with open("./keys/public.pem", "wb") as f:
         f.write(public_key.save_pkcs1("PEM"))
 
@@ -21,7 +22,7 @@ def generateKeys():
 # criadas as chaves, a função vai ler as chaves geradas
 
 
-def loadKeys():
+def carregarChaves():
     with open("./keys/public.pem", "rb") as f:
         public_key = rsa.PublicKey.load_pkcs1(f.read())
 
@@ -33,32 +34,32 @@ def loadKeys():
 # passando a mensagem e a chave pulica
 
 
-def encrypt(message, public_key):
+def criptografar(message, public_key):
     return rsa.encrypt(message.encode('ascii'), public_key)
 
 # função para descriptografar
 # pasando a texto cifrado e a chave privada
 
 
-def decrypt(ciphertext, private_key):
-    return rsa.decrypt(ciphertext, private_key)
+def descriptografar(texto_cifrado, private_key):
+    return rsa.decrypt(texto_cifrado, private_key)
 
 
 def main():
 
-    generateKeys()
+    gerarChaves()
 
-    private_key, public_key = loadKeys()
+    private_key, public_key = carregarChaves()
 
     # recebe a mensagem criptografada
-    ciphertext = encrypt("Esse texto vai ser criptografado", public_key)
+    texto_cifrado = criptografar("Esse texto vai ser criptografado", public_key)
 
     # recebe a mensagem descriptografada
-    plaintext = decrypt(ciphertext, private_key).decode()
+    texto_decifrado = descriptografar(texto_cifrado, private_key).decode()
 
-    if plaintext:
-        print(f'\nTexto criptografado: \n{ciphertext}\n')
-        print(f'Texto: \n{plaintext}\n')
+    if texto_decifrado:
+        print(f'\nTexto criptografado: \n{texto_cifrado}\n')
+        print(f'Texto: \n{texto_decifrado}\n')
     else:
         print(f'Não foi possível descriptografar a mensagem.')
 
