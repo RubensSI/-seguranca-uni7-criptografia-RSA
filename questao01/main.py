@@ -1,4 +1,3 @@
-from asyncore import write
 import rsa
 
 # gerar as chaver publica e privada
@@ -47,19 +46,21 @@ def decrypt(ciphertext, private_key):
 
 def main():
 
+    generateKeys()
+
     private_key, public_key = loadKeys()
 
     # recebe a mensagem criptografada
     ciphertext = encrypt("Esse texto vai ser criptografado", public_key)
 
     # recebe a mensagem descriptografada
-    plaintext = decrypt(ciphertext, private_key)
+    plaintext = decrypt(ciphertext, private_key).decode()
 
-    print("\nTexto cifrado:")
-    print(ciphertext)
-    print("\n")
-    print("Texto descifrado:")
-    print(plaintext)
+    if plaintext:
+        print(f'\nTexto criptografado: \n{ciphertext}\n')
+        print(f'Texto: \n{plaintext}\n')
+    else:
+        print(f'Não foi possível descriptografar a mensagem.')
 
 
 main()
