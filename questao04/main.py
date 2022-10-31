@@ -1,3 +1,4 @@
+from email import message
 import rsa
 
 def descriptografar(texto_cifrado, private_key):
@@ -11,6 +12,19 @@ def carregarChaves():
         private_key = rsa.PrivateKey.load_pkcs1(f.read())
     return private_key, public_key
 
-private_key, public_key = carregarChaves()
+def carregarAssinatura():
+    with open("./assinatura/assinatura", "rb") as f:
+        assinatura = f.read()
+    return assinatura
 
-mensagem = open("./mensagem/texto", "rb").read()
+private_key, public_key = carregarChaves()
+assinatura = carregarAssinatura()
+
+mensagem = open("./mensagem/texto_assinado", "rb").read()
+
+if rsa.verify(mensagem, assinatura, public_key):
+    texto = descriptografar(mensagem, private_key)
+    print(texto)
+
+
+
