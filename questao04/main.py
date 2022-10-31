@@ -1,4 +1,3 @@
-from email import message
 import rsa
 
 def descriptografar(texto_cifrado, private_key):
@@ -33,9 +32,9 @@ def main():
     mensagem = open("./mensagem/texto_assinado", "rb").read()
 
     if rsa.verify(mensagem, assinatura, public_key):
-        print("Assinatura Válida!")
+        print(f'Assinatura Válida!')
         texto = descriptografar(mensagem, private_key)
-        print(texto)
+        print(f'Texto: {texto.decode()}')
     else:
         print("Assinatura Válida!")
 
